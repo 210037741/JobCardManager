@@ -4,19 +4,17 @@
  * and open the template in the editor.
  */
 
+package za.co.dwarfsun.test.repository;
+
 import static org.testng.Assert.*;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 
 /**
  *
- * @author Connie
+ * @author Matthew
  */
-public class NewEmptyTestNGTest {
+public class AuditTrailTest {
     
-    public NewEmptyTestNGTest() {
+    public AuditTrailTest() {
     }
 
     // TODO add test methods here.
@@ -25,19 +23,19 @@ public class NewEmptyTestNGTest {
     // @Test
     // public void hello() {}
 
-    @BeforeClass
+    @org.testng.annotations.BeforeClass
     public static void setUpClass() throws Exception {
     }
 
-    @AfterClass
+    @org.testng.annotations.AfterClass
     public static void tearDownClass() throws Exception {
     }
 
-    @BeforeMethod
+    @org.testng.annotations.BeforeMethod
     public void setUpMethod() throws Exception {
     }
 
-    @AfterMethod
+    @org.testng.annotations.AfterMethod
     public void tearDownMethod() throws Exception {
     }
 }
