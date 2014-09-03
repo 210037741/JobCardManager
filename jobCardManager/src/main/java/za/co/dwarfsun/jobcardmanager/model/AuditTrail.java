@@ -34,6 +34,76 @@ public class AuditTrail implements Serializable {
     private String oldValue;
     private String newValue;
 
+    public AuditTrail(){
+    }
+    public AuditTrail(Builder builder){
+        id = builder.id;
+        tod = builder.tod;
+        type = builder.type;
+        tableName = builder.tableName;
+        field = builder.field;
+        username = builder.username;
+        oldValue = builder.oldValue;
+        newValue = builder.newValue;
+    }
+
+    public static class Builder {    
+        private Long id;
+        @Temporal(javax.persistence.TemporalType.DATE)
+        private Date tod;
+        private String type;
+        private String tableName;
+        private String field;
+        private String username;
+        private String oldValue;
+        private String newValue;
+        
+        public Builder(Date tod){
+            this.tod=tod;
+        }
+        public Builder id(Long value){
+            this.id=value;
+            return this;
+        }
+        public Builder type(String value){
+            this.type=value;
+            return this;
+        }
+        public Builder tableName(String value){
+            this.tableName = value;
+            return this;
+        }
+        public Builder field(String value){
+            this.field = value;
+            return this;
+        }
+        public Builder username(String value){
+            this.username = value;
+            return this;
+        }
+        public Builder oldValue(String value){
+            this.oldValue = value;
+            return this;
+        }
+        public Builder newValue(String value){
+            this.newValue = value;
+            return this;
+        }
+        public Builder AuditTrail(AuditTrail value){
+            this.id = value.id;
+            this.tod = value.tod;
+            this.type = value.type;
+            this.tableName = value.tableName;
+            this.field = value.field;
+            this.username = value.username;
+            this.oldValue = value.oldValue;
+            this.newValue = value.newValue;
+            return this;
+        }
+        public AuditTrail build(){
+            return new AuditTrail(this);
+        }
+    }
     public Long getId() {
         return id;
     }

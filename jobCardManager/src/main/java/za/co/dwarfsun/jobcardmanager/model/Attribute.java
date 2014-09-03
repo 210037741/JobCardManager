@@ -41,6 +41,11 @@ public class Attribute implements Serializable {
     }
     
     public Attribute(Builder builder) {
+        id = builder.id;
+        description = builder.description;
+        tableName = builder.tableName;
+        field = builder.field;
+        iskey = builder.iskey;
     }
 
     public static class Builder {    
