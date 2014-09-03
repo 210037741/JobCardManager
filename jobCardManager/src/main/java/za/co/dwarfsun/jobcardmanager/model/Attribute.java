@@ -29,13 +29,58 @@ public class Attribute implements Serializable {
     private String description;
     private String tableName;
     private String field;
+    private Boolean iskey;
     
     @OneToMany(orphanRemoval=true, cascade= CascadeType.ALL)
     private List<JobCardAttribute> jobCardAttributes;
 
     @OneToMany(orphanRemoval=true, cascade= CascadeType.ALL)
     private List<JobData> jobData;
+
+    public Attribute() {
+    }
     
+    public Attribute(Builder builder) {
+    }
+
+    public static class Builder {    
+        private Long id;
+        private String description;
+        private String tableName;
+        private String field;
+        private Boolean iskey;
+        
+        public Builder(String description){
+            this.description = description;
+        }
+        public Builder id(Long value){
+            this.id = value;
+            return this;
+        }
+        public Builder tableName(String value){
+            this.tableName = value;
+            return this;
+        }
+        public Builder field(String value){
+            this.field = value;
+            return this;
+        }
+        public Builder iskey(Boolean value){
+            this.iskey = value;
+            return this;
+        }
+        public Builder Attribute(Attribute value){
+            id = value.getId();
+            description = value.getDescription();
+            tableName = value.getTableName();
+            field = value.getField();
+            iskey = value.getIskey();
+            return this;
+        }
+        public Attribute build(){
+            return new Attribute(this);
+        }
+    }
     
     public Long getId() {
         return id;
@@ -69,12 +114,28 @@ public class Attribute implements Serializable {
         this.field = field;
     }
 
+    public Boolean getIskey() {
+        return iskey;
+    }
+
+    public void setIskey(Boolean iskey) {
+        this.iskey = iskey;
+    }
+
     public List<JobCardAttribute> getJobCardAttributes() {
         return jobCardAttributes;
     }
 
     public void setJobCardAttributes(List<JobCardAttribute> jobCardAttributes) {
         this.jobCardAttributes = jobCardAttributes;
+    }
+
+    public List<JobData> getJobData() {
+        return jobData;
+    }
+
+    public void setJobData(List<JobData> jobData) {
+        this.jobData = jobData;
     }
 
     @Override
