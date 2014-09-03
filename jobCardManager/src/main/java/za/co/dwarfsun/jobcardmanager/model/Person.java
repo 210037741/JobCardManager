@@ -6,54 +6,92 @@
 
 package za.co.dwarfsun.jobcardmanager.model;
 
-import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
 /**
  *
  * @author Connie
  */
-@Entity
-public class Person implements Serializable {
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+public class Person {
+    private String title;
+    private String firstname;
+    private String lastname;
+    private String email;
+    private String phone;
 
-    public Long getId() {
-        return id;
+    public String getTitle() {
+        return title;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        int hash = 3;
+        hash = 97 * hash + (this.title != null ? this.title.hashCode() : 0);
+        hash = 97 * hash + (this.firstname != null ? this.firstname.hashCode() : 0);
+        hash = 97 * hash + (this.lastname != null ? this.lastname.hashCode() : 0);
+        hash = 97 * hash + (this.email != null ? this.email.hashCode() : 0);
+        hash = 97 * hash + (this.phone != null ? this.phone.hashCode() : 0);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Person)) {
+    public boolean equals(Object obj) {
+        if (obj == null) {
             return false;
         }
-        Person other = (Person) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Person other = (Person) obj;
+        if ((this.title == null) ? (other.title != null) : !this.title.equals(other.title)) {
+            return false;
+        }
+        if ((this.firstname == null) ? (other.firstname != null) : !this.firstname.equals(other.firstname)) {
+            return false;
+        }
+        if ((this.lastname == null) ? (other.lastname != null) : !this.lastname.equals(other.lastname)) {
+            return false;
+        }
+        if ((this.email == null) ? (other.email != null) : !this.email.equals(other.email)) {
+            return false;
+        }
+        if ((this.phone == null) ? (other.phone != null) : !this.phone.equals(other.phone)) {
             return false;
         }
         return true;
     }
-
-    @Override
-    public String toString() {
-        return "za.co.dwarfsun.jobcardmanager.model.Person[ id=" + id + " ]";
-    }
-    
 }

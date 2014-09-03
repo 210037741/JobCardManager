@@ -7,10 +7,13 @@
 package za.co.dwarfsun.jobcardmanager.model;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 /**
  * and me
@@ -22,8 +25,39 @@ public class Client implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String name;
     
+    @OneToMany
+    @JoinColumn(name="contactPersonId")
+    private List<ContactPerson> contactPerson;
     
+    @OneToMany
+    @JoinColumn(name="siteId")
+    private List<Site> site;
+
+    public List<Site> getSite() {
+        return site;
+    }
+
+    public void setSite(List<Site> site) {
+        this.site = site;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<ContactPerson> getContactPerson() {
+        return contactPerson;
+    }
+
+    public void setContactPerson(List<ContactPerson> contactPerson) {
+        this.contactPerson = contactPerson;
+    }
 
     public Long getId() {
         return id;
