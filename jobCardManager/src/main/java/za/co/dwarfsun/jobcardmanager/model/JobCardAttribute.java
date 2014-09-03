@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -24,6 +26,13 @@ public class JobCardAttribute implements Serializable {
     private Long id;
     
     private int lineNum;
+    @ManyToOne
+    @JoinColumn(name="AttributeId")
+    private Attribute attribute;
+
+    @ManyToOne
+    @JoinColumn(name="JobCardId")
+    private JobCard jobCard;
 
     public Long getId() {
         return id;
@@ -39,6 +48,22 @@ public class JobCardAttribute implements Serializable {
 
     public void setLineNum(int lineNum) {
         this.lineNum = lineNum;
+    }
+
+    public Attribute getAttribute() {
+        return attribute;
+    }
+
+    public void setAttribute(Attribute attribute) {
+        this.attribute = attribute;
+    }
+
+    public JobCard getJobCard() {
+        return jobCard;
+    }
+
+    public void setJobCard(JobCard jobCard) {
+        this.jobCard = jobCard;
     }
 
     @Override

@@ -7,10 +7,13 @@
 package za.co.dwarfsun.jobcardmanager.model;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -25,6 +28,9 @@ public class JobCard implements Serializable {
     
     private String name;
 
+    @OneToMany(orphanRemoval=true, cascade= CascadeType.ALL)
+    private List<JobCardAttribute> jobCardAttributes;
+    
     public Long getId() {
         return id;
     }
@@ -39,6 +45,14 @@ public class JobCard implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<JobCardAttribute> getJobCardAttributes() {
+        return jobCardAttributes;
+    }
+
+    public void setJobCardAttributes(List<JobCardAttribute> jobCardAttributes) {
+        this.jobCardAttributes = jobCardAttributes;
     }
 
     @Override

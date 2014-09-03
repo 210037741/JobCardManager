@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -22,8 +24,11 @@ public class JobData implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @ManyToOne
+    @JoinColumn(name="attributeID")
+    private Attribute attribute;
     
-    private String value;
+    private String val;
 
     public Long getId() {
         return id;
@@ -34,11 +39,19 @@ public class JobData implements Serializable {
     }
 
     public String getValue() {
-        return value;
+        return val;
     }
 
-    public void setValue(String value) {
-        this.value = value;
+    public void setValue(String val) {
+        this.val = val;
+    }
+
+    public Attribute getAttribute() {
+        return attribute;
+    }
+
+    public void setAttribute(Attribute attribute) {
+        this.attribute = attribute;
     }
 
     @Override
