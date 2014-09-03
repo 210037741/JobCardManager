@@ -4,6 +4,17 @@
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <class>za.co.dwarfsun.jobcardmanager.model.Person</class>
     <class>za.co.dwarfsun.jobcardmanager.model.ContactPerson</class>
+    <class>za.co.dwarfsun.jobcardmanager.model.Client</class>
+    <class>za.co.dwarfsun.jobcardmanager.model.Site</class>
+    <class>za.co.dwarfsun.jobcardmanager.model.Job</class>
+    <class>za.co.dwarfsun.jobcardmanager.model.JobAttachment</class>
+    <class>za.co.dwarfsun.jobcardmanager.model.User</class>
+    <class>za.co.dwarfsun.jobcardmanager.model.Role</class>
+    <class>za.co.dwarfsun.jobcardmanager.model.JobData</class>
+    <class>za.co.dwarfsun.jobcardmanager.model.JobCardAttribute</class>
+    <class>za.co.dwarfsun.jobcardmanager.model.Attribute</class>
+    <class>za.co.dwarfsun.jobcardmanager.model.JobCard</class>
+    <class>za.co.dwarfsun.jobcardmanager.model.AuditTrail</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/jobCardDB"/>
