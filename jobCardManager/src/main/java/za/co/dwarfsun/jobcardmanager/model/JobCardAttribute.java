@@ -22,6 +22,8 @@ public class JobCardAttribute implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    
+    private int lineNum;
 
     public Long getId() {
         return id;
@@ -29,6 +31,14 @@ public class JobCardAttribute implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public int getLineNum() {
+        return lineNum;
+    }
+
+    public void setLineNum(int lineNum) {
+        this.lineNum = lineNum;
     }
 
     @Override

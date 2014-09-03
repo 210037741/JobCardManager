@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -23,10 +24,11 @@ public class AuditTrail implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date tod;
     
     private String type;
-    private String table;
+    private String tableName;
     private String field;
     private String username;
     private String oldValue;
@@ -38,6 +40,62 @@ public class AuditTrail implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Date getTod() {
+        return tod;
+    }
+
+    public void setTod(Date tod) {
+        this.tod = tod;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getTable() {
+        return tableName;
+    }
+
+    public void setTable(String tableName) {
+        this.tableName = tableName;
+    }
+
+    public String getField() {
+        return field;
+    }
+
+    public void setField(String field) {
+        this.field = field;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getOldValue() {
+        return oldValue;
+    }
+
+    public void setOldValue(String oldValue) {
+        this.oldValue = oldValue;
+    }
+
+    public String getNewValue() {
+        return newValue;
+    }
+
+    public void setNewValue(String newValue) {
+        this.newValue = newValue;
     }
 
     @Override

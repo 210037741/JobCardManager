@@ -22,6 +22,8 @@ public class JobData implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    
+    private String value;
 
     public Long getId() {
         return id;
@@ -29,6 +31,14 @@ public class JobData implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
     }
 
     @Override
