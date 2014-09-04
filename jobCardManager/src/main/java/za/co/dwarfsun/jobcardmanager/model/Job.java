@@ -26,6 +26,54 @@ public class Job implements Serializable {
     private String status;
     private Boolean complete;
 
+    public Job(){
+    }
+    
+    public Job(Builder builder) {
+        id = builder.id;
+        info = builder.info;
+        status = builder.status;
+        complete = builder.complete;
+    }
+    
+    public static class Builder {    
+        private Long id;
+        private String info;
+        private String status;
+        private Boolean complete;
+    
+        public Builder id(Long value){
+            this.id = value;
+            return this;
+        }
+        
+        public Builder info(String value){
+            this.info = value;
+            return this;
+        }
+        
+        public Builder status(String value){
+            this.status = value;
+            return this;
+        }
+        
+        public Builder complete(Boolean value){
+            this.complete = value;
+            return this;
+        }
+        
+        public Builder Job(Job value){
+            id = value.getId();
+            info = value.getInfo();
+            status = value.getStatus();
+            complete = value.isComplete();
+            return this;
+        }
+        public Job build(){
+            return new Job(this);
+        }
+    }
+    
     public String getInfo() {
         return info;
     }

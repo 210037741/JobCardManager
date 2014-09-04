@@ -22,13 +22,54 @@ public class JobAttachment implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String filePath;
 
+    public JobAttachment(){
+    }
+    
+    public JobAttachment(Builder builder) {
+        id = builder.id;
+        filePath = builder.filePath;
+    }
+    
+    public static class Builder {    
+        private Long id;
+        private String filePath;
+        
+        public Builder id(Long value){
+            this.id = value;
+            return this;
+        }
+        
+        public Builder filePath(String value){
+            this.filePath = value;
+            return this;
+        }
+        
+        public Builder JobAttachment(JobAttachment value){
+            id = value.getId();
+            filePath = value.getFilePath();
+            return this;
+        }
+        public JobAttachment build(){
+            return new JobAttachment(this);
+        }
+    }
+    
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+    
+    public String getFilePath() {
+        return filePath;
+    }
+
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
     }
 
     @Override

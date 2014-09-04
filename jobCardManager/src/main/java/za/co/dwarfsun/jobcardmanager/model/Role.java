@@ -22,7 +22,40 @@ public class Role implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
+    private String description;
+    
+    public Role(){
+    }
+    
+    public Role(Builder builder) {
+        id = builder.id;
+        description = builder.description;
+    }
+    
+    public static class Builder {    
+        private Long id;
+        private String description;
+        
+        public Builder id(Long value){
+            this.id = value;
+            return this;
+        }
+        
+        public Builder description(String value){
+            this.description = value;
+            return this;
+        }
+        
+        public Builder Role(Role value){
+            id = value.getId();
+            description = value.getDescription();
+            return this;
+        }
+        public Role build(){
+            return new Role(this);
+        }
+    }
+    
     public Long getId() {
         return id;
     }
@@ -30,7 +63,15 @@ public class Role implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+    
+    public String getDescription() {
+        return description;
+    }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;

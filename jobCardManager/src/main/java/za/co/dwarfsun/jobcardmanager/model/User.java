@@ -22,13 +22,71 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String userName;
+    private String password;
 
+    public User(){
+    }
+    
+    public User(Builder builder) {
+        id = builder.id;
+        userName = builder.userName;
+        password = builder.password;
+    }
+    
+    public static class Builder {    
+        private Long id;
+        private String userName;
+        private String password;
+        
+        public Builder id(Long value){
+            this.id = value;
+            return this;
+        }
+        
+        public Builder username(String value){
+            this.userName = value;
+            return this;
+        }
+        
+        public Builder password(String value){
+            this.password = value;
+            return this;
+        }
+        
+        public Builder User(User value){
+            id = value.getId();
+            userName = value.getUserName();
+            password = value.getPassword();
+            return this;
+        }
+        public User build(){
+            return new User(this);
+        }
+    }
+    
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+    
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+    
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
