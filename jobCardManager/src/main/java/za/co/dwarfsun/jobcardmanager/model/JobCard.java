@@ -30,6 +30,40 @@ public class JobCard implements Serializable {
 
     @OneToMany(orphanRemoval=true, cascade= CascadeType.ALL)
     private List<JobCardAttribute> jobCardAttributes;
+
+    public JobCard(){
+    }
+    public JobCard(Builder builder){
+        id = builder.id;
+        name = builder.name;
+        jobCardAttributes = builder.jobCardAttributes;
+    }
+    public static class Builder {    
+            private Long id;
+            private String name;
+            private List<JobCardAttribute> jobCardAttributes;
+            
+            public Builder(String name){
+                this.name = name;
+            }
+            public Builder id(Long value){
+                this.id = value;
+                return this;
+            }
+            public Builder jobCardAttributes(List<JobCardAttribute> value){
+                this.jobCardAttributes = value;
+                return this;
+            }
+            public Builder JobCard(JobCard value){
+                this.id = value.id;
+                this.name = value.name;
+                this.jobCardAttributes = value.jobCardAttributes;
+                return this;
+            }
+            public JobCard build(){
+                return new JobCard(this);
+            }
+    }
     
     public Long getId() {
         return id;

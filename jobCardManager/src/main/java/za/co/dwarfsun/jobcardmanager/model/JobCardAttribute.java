@@ -34,6 +34,47 @@ public class JobCardAttribute implements Serializable {
     @JoinColumn(name="JobCardId")
     private JobCard jobCard;
 
+    public JobCardAttribute(){
+    }
+    public JobCardAttribute(Builder builder){
+        id = builder.id;
+        lineNum = builder.lineNum;
+        attribute = builder.attribute;
+        jobCard = builder.jobCard;
+    }
+
+    public static class Builder {
+        private Long id;
+        private int lineNum;
+        private Attribute attribute;
+        private JobCard jobCard;
+        public Builder(int lineNum){
+            this.lineNum = lineNum;
+        }
+        public Builder id(Long value){
+            this.id = value;
+            return this;
+        }
+        public Builder attribute(Attribute value){
+            this.attribute = value;
+            return this;
+        }
+        public Builder jobCard(JobCard value){
+            this.jobCard = value;
+            return this;
+        }
+        public Builder JobCardAttribute(JobCardAttribute value){
+            this.id = value.id;
+            this.lineNum = value.lineNum;
+            this.attribute = value.attribute;
+            this.jobCard = value.jobCard;
+            return this;
+        }
+        public JobCardAttribute build(){
+            return new JobCardAttribute(this);
+        }
+    }
+    
     public Long getId() {
         return id;
     }

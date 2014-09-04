@@ -56,7 +56,7 @@ public class AuditTrailRepositoryTest {
     }
     
     @Test(dependsOnMethods="createAuditTrail", enabled=true)
-    public void readAttribute(){
+    public void readAuditTrail(){
         auditTrailRepository = ctx.getBean(AuditTrailRepository.class);
         AuditTrail auditTrail = auditTrailRepository.findOne(id);
         Assert.assertEquals(auditTrail.getField(), "column1");

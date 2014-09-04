@@ -6,17 +6,18 @@
 
 package za.co.dwarfsun.jobcardmanager.test.repository;
 
-import za.co.dwarfsun.jobcardmanager.model.Attribute;
-import za.co.dwarfsun.jobcardmanager.respository.AttributeRepository;
-import za.co.dwarfsun.jobcardmanager.test.ConnectionConfigTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import static org.testng.Assert.*;
+import org.testng.Assert;
+//import static org.testng.Assert.*;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import za.co.dwarfsun.jobcardmanager.model.Attribute;
+import za.co.dwarfsun.jobcardmanager.repository.AttributeRepository;
+import za.co.dwarfsun.jobcardmanager.test.ConnectionConfigTest;
 
 /**
  *
@@ -35,6 +36,50 @@ public class AttributeRepositoryTest {
     //
     // @Test
     // public void hello() {}
+    @Test(enabled=true)
+    public void createAttribute(){
+        attributeRepository = ctx.getBean(AttributeRepository.class);
+        Attribute attribute = new Attribute.Builder("Parcel Number")
+                .tableName("parcel")
+                .field("strap")
+                .iskey(Boolean.TRUE)
+                .build();
+        attributeRepository.save(attribute);
+        id = attribute.getId();
+        Assert.assertNotNull(attribute);
+    }
+    
+    @Test(dependsOnMethods="createAttribute", enabled=true)
+    public void readAttribute(){
+        attributeRepository = ctx.getBean(AttributeRepository.class);
+        Attribute attribute = attributeRepository.findOne(id);
+        Assert.assertEquals(attribute.getField(), "strap");
+    }
+    
+    @Test(dependsOnMethods="readAttribute", enabled=true)
+    public void updateAttribute(){
+        attributeRepository = ctx.getBean(AttributeRepository.class);
+        Attribute attribute = attributeRepository.findOne(id);
+        
+        Attribute updatedAttribute = new Attribute.Builder("Use Code")
+                .Attribute(attribute)
+                .field("dor_cd")
+                .iskey(Boolean.FALSE)
+                .build();
+        attributeRepository.save(updatedAttribute);
+        Attribute newAttribute = attributeRepository.findOne(id);
+        Assert.assertEquals(newAttribute.getDescription(), "Parcel Number");
+        Assert.assertEquals(newAttribute.getField(), "dor_cd");
+    }
+    
+    @Test(dependsOnMethods="updateAttribute", enabled=true)
+    public void deleteAttribute(){
+        attributeRepository = ctx.getBean(AttributeRepository.class);
+        Attribute attribute = attributeRepository.findOne(id);
+        attributeRepository.delete(attribute);
+        Attribute deletedAttribute = attributeRepository.findOne(id);
+        Assert.assertNull(deletedAttribute);
+    }
 
     @BeforeClass
     public static void setUpClass() throws Exception {

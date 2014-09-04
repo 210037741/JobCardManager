@@ -30,6 +30,36 @@ public class JobData implements Serializable {
     
     private String val;
 
+    public JobData(){
+    }
+    public JobData(Builder builder){
+    }
+    public static class Builder {
+        private Long id;
+        private Attribute attribute;
+        private String val;
+        public Builder(String val){
+            this.val = val;
+        }
+        public Builder id(Long value){
+            this.id=value;
+            return this;
+        }
+        public Builder attribute(Attribute value){
+            this.attribute = value;
+            return this;
+        }
+        public Builder JobData(JobData value){
+            this.id = value.id;
+            this.val = value.val;
+            this.attribute = value.attribute;
+            return this;
+        }
+        public JobData build(){
+            return new JobData(this);
+        }
+    }
+
     public Long getId() {
         return id;
     }
