@@ -30,7 +30,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @EnableTransactionManagement
 @ComponentScan(basePackageClasses = Application.class, excludeFilters = @ComponentScan.Filter({Controller.class, Configuration.class}))
-@EnableJpaRepositories(basePackages = "za.co.dwarfsun.jobcardmanager.respository")
+@EnableJpaRepositories(basePackages = "za.co.dwarfsun.jobcardmanager.repository")
 public class ConnectionConfigTest {
 
     @Bean

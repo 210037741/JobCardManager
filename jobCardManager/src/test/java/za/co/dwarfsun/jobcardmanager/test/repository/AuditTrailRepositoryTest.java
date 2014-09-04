@@ -82,8 +82,8 @@ public class AuditTrailRepositoryTest {
     public void deleteAuditTrail(){
         auditTrailRepository = ctx.getBean(AuditTrailRepository.class);
         AuditTrail auditTrail = auditTrailRepository.findOne(id);
-        AuditTrailRepository.delete(auditTrail);
-        AuditTrail deletedAuditTrail = AuditTrailRepository.findOne(id);
+        auditTrailRepository.delete(auditTrail);
+        AuditTrail deletedAuditTrail = auditTrailRepository.findOne(id);
         Assert.assertNull(deletedAuditTrail);
     }
 

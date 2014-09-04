@@ -66,7 +66,7 @@ public class JobCardAttributeRepositoryTest {
                 .build();
         jobCardAttributeRepository.save(updatedJobCardAttribute);
         JobCardAttribute newJobCardAttribute = jobCardAttributeRepository.findOne(id);
-        Assert.assertEquals(newJobCardAttribute.getLineNum, 2);
+        Assert.assertEquals(newJobCardAttribute.getLineNum(), 2);
     }
     
     @Test(dependsOnMethods="updateJobCardAttribute", enabled=true)
