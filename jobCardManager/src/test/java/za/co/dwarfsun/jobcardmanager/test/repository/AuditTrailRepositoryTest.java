@@ -6,7 +6,7 @@
 
 package za.co.dwarfsun.jobcardmanager.test.repository;
 
-import java.time.Instant;
+//import java.time.Instant;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.testng.Assert;
@@ -42,7 +42,7 @@ public class AuditTrailRepositoryTest {
     @Test(enabled=true)
     public void createAuditTrail(){
         auditTrailRepository = ctx.getBean(AuditTrailRepository.class);
-        AuditTrail auditTrail = new AuditTrail.Builder(Date.from(Instant.EPOCH))
+        AuditTrail auditTrail = new AuditTrail.Builder(new Date())
                 .username("TestCaseDummyUser")
                 .tableName("NotARealTable")
                 .field("column1")
@@ -67,7 +67,7 @@ public class AuditTrailRepositoryTest {
         auditTrailRepository = ctx.getBean(AuditTrailRepository.class);
         AuditTrail auditTrail = auditTrailRepository.findOne(id);
         
-        AuditTrail updatedAuditTrail = new AuditTrail.Builder(Date.from(Instant.EPOCH))
+        AuditTrail updatedAuditTrail = new AuditTrail.Builder(new Date())
                 .AuditTrail(auditTrail)
                 .type("UPDATE")
                 .oldValue(auditTrail.getNewValue())
