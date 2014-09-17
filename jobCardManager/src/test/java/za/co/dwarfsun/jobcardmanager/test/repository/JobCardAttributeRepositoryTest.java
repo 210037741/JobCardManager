@@ -37,7 +37,7 @@ public class JobCardAttributeRepositoryTest {
     //
     // @Test
     // public void hello() {}
-    @Test(enabled=true)
+    @Test(enabled=false)
     public void createJobCardAttribute(){
         jobCardAttributeRepository = ctx.getBean(JobCardAttributeRepository.class);
         JobCardAttribute jobCardAttribute = new JobCardAttribute.Builder(1)
@@ -49,14 +49,14 @@ public class JobCardAttributeRepositoryTest {
         Assert.assertNotNull(jobCardAttribute);
     }
     
-    @Test(dependsOnMethods="createJobCardAttribute", enabled=true)
+    @Test(dependsOnMethods="createJobCardAttribute", enabled=false)
     public void readJobCardAttribute(){
         jobCardAttributeRepository = ctx.getBean(JobCardAttributeRepository.class);
         JobCardAttribute jobCardAttribute = jobCardAttributeRepository.findOne(id);
         Assert.assertEquals(jobCardAttribute.getLineNum(), 1);
     }
     
-    @Test(dependsOnMethods="readJobCardAttribute", enabled=true)
+    @Test(dependsOnMethods="readJobCardAttribute", enabled=false)
     public void updateJobCardAttribute(){
         jobCardAttributeRepository = ctx.getBean(JobCardAttributeRepository.class);
         JobCardAttribute jobCardAttribute = jobCardAttributeRepository.findOne(id);
@@ -69,7 +69,7 @@ public class JobCardAttributeRepositoryTest {
         Assert.assertEquals(newJobCardAttribute.getLineNum(), 2);
     }
     
-    @Test(dependsOnMethods="updateJobCardAttribute", enabled=true)
+    @Test(dependsOnMethods="updateJobCardAttribute", enabled=false)
     public void deleteJobCardAttribute(){
         jobCardAttributeRepository = ctx.getBean(JobCardAttributeRepository.class);
         JobCardAttribute jobCardAttribute = jobCardAttributeRepository.findOne(id);

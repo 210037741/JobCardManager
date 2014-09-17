@@ -39,7 +39,8 @@ public class AuditTrailRepositoryTest {
     //
     // @Test
     // public void hello() {}
-    @Test(enabled=true)
+    
+    @Test(enabled=false)
     public void createAuditTrail(){
         auditTrailRepository = ctx.getBean(AuditTrailRepository.class);
         AuditTrail auditTrail = new AuditTrail.Builder(new Date())
@@ -55,14 +56,14 @@ public class AuditTrailRepositoryTest {
         Assert.assertNotNull(auditTrail);
     }
     
-    @Test(dependsOnMethods="createAuditTrail", enabled=true)
+    @Test(dependsOnMethods="createAuditTrail", enabled=false)
     public void readAuditTrail(){
         auditTrailRepository = ctx.getBean(AuditTrailRepository.class);
         AuditTrail auditTrail = auditTrailRepository.findOne(id);
         Assert.assertEquals(auditTrail.getField(), "column1");
     }
     
-    @Test(dependsOnMethods="readAuditTrail", enabled=true)
+    @Test(dependsOnMethods="readAuditTrail", enabled=false)
     public void updateAuditTrail(){
         auditTrailRepository = ctx.getBean(AuditTrailRepository.class);
         AuditTrail auditTrail = auditTrailRepository.findOne(id);
@@ -78,7 +79,7 @@ public class AuditTrailRepositoryTest {
         Assert.assertEquals(newAuditTrail.getType(), "UPDATE");
     }
     
-    @Test(dependsOnMethods="updateAuditTrail", enabled=true)
+    @Test(dependsOnMethods="updateAuditTrail", enabled=false)
     public void deleteAuditTrail(){
         auditTrailRepository = ctx.getBean(AuditTrailRepository.class);
         AuditTrail auditTrail = auditTrailRepository.findOne(id);

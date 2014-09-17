@@ -37,7 +37,8 @@ public class JobDataRepositoryTest {
     //
     // @Test
     // public void hello() {}
-    @Test(enabled=true)
+    
+    @Test(enabled=false)
     public void createJobData(){
         jobDataRepository = ctx.getBean(JobDataRepository.class);
         JobData jobData = new JobData.Builder("test data")
@@ -48,14 +49,14 @@ public class JobDataRepositoryTest {
         Assert.assertNotNull(jobData);
     }
     
-    @Test(dependsOnMethods="createJobData", enabled=true)
+    @Test(dependsOnMethods="createJobData", enabled=false)
     public void readJobData(){
         jobDataRepository = ctx.getBean(JobDataRepository.class);
         JobData jobData = jobDataRepository.findOne(id);
         Assert.assertEquals(jobData.getValue(), "test data");
     }
     
-    @Test(dependsOnMethods="readJobData", enabled=true)
+    @Test(dependsOnMethods="readJobData", enabled=false)
     public void updateJobData(){
         jobDataRepository = ctx.getBean(JobDataRepository.class);
         JobData jobData = jobDataRepository.findOne(id);
@@ -68,7 +69,7 @@ public class JobDataRepositoryTest {
         Assert.assertEquals(newJobData.getValue(), "changed data");
     }
     
-    @Test(dependsOnMethods="updateJobData", enabled=true)
+    @Test(dependsOnMethods="updateJobData", enabled=false)
     public void deleteJobData(){
         jobDataRepository = ctx.getBean(JobDataRepository.class);
         JobData jobData = jobDataRepository.findOne(id);

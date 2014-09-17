@@ -5,7 +5,6 @@
  */
 package za.co.dwarfsun.jobcardmanager.test;
 
-
 import za.co.dwarfsun.jobcardmanager.Application;
 import javax.sql.DataSource;
 import org.apache.commons.dbcp.BasicDataSource;

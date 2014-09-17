@@ -37,7 +37,7 @@ public class JobCardRepositoryTest {
     //
     // @Test
     // public void hello() {}
-    @Test(enabled=true)
+    @Test(enabled=false)
     public void createJobCard(){
         jobCardRepository = ctx.getBean(JobCardRepository.class);
         JobCard jobCard = new JobCard.Builder("Res DCF")
@@ -48,14 +48,14 @@ public class JobCardRepositoryTest {
         Assert.assertNotNull(jobCard);
     }
     
-    @Test(dependsOnMethods="createJobCard", enabled=true)
+    @Test(dependsOnMethods="createJobCard", enabled=false)
     public void readJobCard(){
         jobCardRepository = ctx.getBean(JobCardRepository.class);
         JobCard jobCard = jobCardRepository.findOne(id);
         Assert.assertEquals(jobCard.getName(), "Res DCF");
     }
     
-    @Test(dependsOnMethods="readJobCard", enabled=true)
+    @Test(dependsOnMethods="readJobCard", enabled=false)
     public void updateJobCard(){
         jobCardRepository = ctx.getBean(JobCardRepository.class);
         JobCard jobCard = jobCardRepository.findOne(id);
@@ -68,7 +68,7 @@ public class JobCardRepositoryTest {
         Assert.assertEquals(newJobCard.getName(), "Res DCF");
     }
     
-    @Test(dependsOnMethods="updateJobCard", enabled=true)
+    @Test(dependsOnMethods="updateJobCard", enabled=false)
     public void deleteJobCard(){
         jobCardRepository = ctx.getBean(JobCardRepository.class);
         JobCard jobCard = jobCardRepository.findOne(id);
