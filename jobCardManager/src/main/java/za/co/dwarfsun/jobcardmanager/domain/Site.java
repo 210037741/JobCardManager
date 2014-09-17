@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package za.co.dwarfsun.jobcardmanager.model;
+package za.co.dwarfsun.jobcardmanager.domain;
 
 import java.io.Serializable;
 import java.util.List;
@@ -14,35 +14,31 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-
 /**
- * and me
+ *
  * @author Matthew
  */
 @Entity
-public class Client implements Serializable {
+public class Site implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
+    private String address;
     
     @OneToMany
-    @JoinColumn(name="contactPersonId")
-    private List<ContactPerson> contactPerson;
+    @JoinColumn(name="jobId")
+    private List<Job> job;
+
+    public List<Job> getJob() {
+        return job;
+    }
+
+    public void setJob(List<Job> job) {
+        this.job = job;
+    }
     
-    @OneToMany
-    @JoinColumn(name="siteId")
-    private List<Site> site;
-
-    public List<Site> getSite() {
-        return site;
-    }
-
-    public void setSite(List<Site> site) {
-        this.site = site;
-    }
-
     public String getName() {
         return name;
     }
@@ -51,12 +47,12 @@ public class Client implements Serializable {
         this.name = name;
     }
 
-    public List<ContactPerson> getContactPerson() {
-        return contactPerson;
+    public String getAddress() {
+        return address;
     }
 
-    public void setContactPerson(List<ContactPerson> contactPerson) {
-        this.contactPerson = contactPerson;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public Long getId() {
@@ -77,10 +73,10 @@ public class Client implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Client)) {
+        if (!(object instanceof Site)) {
             return false;
         }
-        Client other = (Client) object;
+        Site other = (Site) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -89,7 +85,7 @@ public class Client implements Serializable {
 
     @Override
     public String toString() {
-        return "za.co.dwarfsun.jobcardmanager.model.Client[ id=" + id + " ]";
+        return "za.co.dwarfsun.jobcardmanager.model.Site[ id=" + id + " ]";
     }
     
 }

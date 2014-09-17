@@ -6,7 +6,7 @@
 
 package za.co.dwarfsun.jobcardmanager.services.crud.implementation;
 
-import za.co.dwarfsun.jobcardmanager.model.AuditTrail;
+import za.co.dwarfsun.jobcardmanager.domain.AuditTrail;
 import za.co.dwarfsun.jobcardmanager.repository.GenericDAO;
 import za.co.dwarfsun.jobcardmanager.services.crud.AuditTrailCrudService;
 import java.util.List;

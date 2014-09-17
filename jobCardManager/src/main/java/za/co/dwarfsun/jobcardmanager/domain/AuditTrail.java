@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package za.co.dwarfsun.jobcardmanager.model;
+package za.co.dwarfsun.jobcardmanager.domain;
 
 import java.io.Serializable;
 import java.util.Date;

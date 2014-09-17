@@ -4,62 +4,67 @@
  * and open the template in the editor.
  */
 
-package za.co.dwarfsun.jobcardmanager.model;
+package za.co.dwarfsun.jobcardmanager.domain;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 /**
  *
  * @author Matthew
  */
 @Entity
-public class JobData implements Serializable {
+public class User implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @ManyToOne
-    @JoinColumn(name="attributeID")
-    private Attribute attribute;
+    private String userName;
+    private String password;
+
+    public User(){
+    }
     
-    private String val;
-
-    public JobData(){
+    public User(Builder builder) {
+        id = builder.id;
+        userName = builder.userName;
+        password = builder.password;
     }
-    public JobData(Builder builder){
-    }
-    public static class Builder {
+    
+    public static class Builder {    
         private Long id;
-        private Attribute attribute;
-        private String val;
-        public Builder(String val){
-            this.val = val;
-        }
+        private String userName;
+        private String password;
+        
         public Builder id(Long value){
-            this.id=value;
+            this.id = value;
             return this;
         }
-        public Builder attribute(Attribute value){
-            this.attribute = value;
+        
+        public Builder username(String value){
+            this.userName = value;
             return this;
         }
-        public Builder JobData(JobData value){
-            this.id = value.id;
-            this.val = value.val;
-            this.attribute = value.attribute;
+        
+        public Builder password(String value){
+            this.password = value;
             return this;
         }
-        public JobData build(){
-            return new JobData(this);
+        
+        public Builder User(User value){
+            id = value.getId();
+            userName = value.getUserName();
+            password = value.getPassword();
+            return this;
+        }
+        public User build(){
+            return new User(this);
         }
     }
-
+    
     public Long getId() {
         return id;
     }
@@ -67,21 +72,21 @@ public class JobData implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-
-    public String getValue() {
-        return val;
+    
+    public String getUserName() {
+        return userName;
     }
 
-    public void setValue(String val) {
-        this.val = val;
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+    
+    public String getPassword() {
+        return password;
     }
 
-    public Attribute getAttribute() {
-        return attribute;
-    }
-
-    public void setAttribute(Attribute attribute) {
-        this.attribute = attribute;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
@@ -94,10 +99,10 @@ public class JobData implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof JobData)) {
+        if (!(object instanceof User)) {
             return false;
         }
-        JobData other = (JobData) object;
+        User other = (User) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -106,7 +111,7 @@ public class JobData implements Serializable {
 
     @Override
     public String toString() {
-        return "za.co.dwarfsun.jobcardmanager.model.JobData[ id=" + id + " ]";
+        return "za.co.dwarfsun.jobcardmanager.model.User[ id=" + id + " ]";
     }
     
 }

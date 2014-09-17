@@ -6,7 +6,7 @@
 
 package za.co.dwarfsun.jobcardmanager.repository;
 
-import za.co.dwarfsun.jobcardmanager.model.Attribute;
+import za.co.dwarfsun.jobcardmanager.domain.Attribute;
 import org.springframework.data.jpa.repository.JpaRepository;
 /**
  *

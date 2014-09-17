@@ -2,19 +2,19 @@
 <persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
   <persistence-unit name="za.co.dwarfsun_jobCardManager_war_1.0-SNAPSHOTPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
-    <class>za.co.dwarfsun.jobcardmanager.model.Person</class>
-    <class>za.co.dwarfsun.jobcardmanager.model.ContactPerson</class>
-    <class>za.co.dwarfsun.jobcardmanager.model.Client</class>
-    <class>za.co.dwarfsun.jobcardmanager.model.Site</class>
-    <class>za.co.dwarfsun.jobcardmanager.model.Job</class>
-    <class>za.co.dwarfsun.jobcardmanager.model.JobAttachment</class>
-    <class>za.co.dwarfsun.jobcardmanager.model.User</class>
-    <class>za.co.dwarfsun.jobcardmanager.model.Role</class>
-    <class>za.co.dwarfsun.jobcardmanager.model.JobData</class>
-    <class>za.co.dwarfsun.jobcardmanager.model.JobCardAttribute</class>
-    <class>za.co.dwarfsun.jobcardmanager.model.Attribute</class>
-    <class>za.co.dwarfsun.jobcardmanager.model.JobCard</class>
-    <class>za.co.dwarfsun.jobcardmanager.model.AuditTrail</class>
+    <class>za.co.dwarfsun.jobcardmanager.domain.Client</class>
+    <class>za.co.dwarfsun.jobcardmanager.domain.JobCard</class>
+    <class>za.co.dwarfsun.jobcardmanager.domain.Site</class>
+    <class>za.co.dwarfsun.jobcardmanager.domain.Role</class>
+    <class>za.co.dwarfsun.jobcardmanager.domain.AuditTrail</class>
+    <class>za.co.dwarfsun.jobcardmanager.domain.JobCardAttribute</class>
+    <class>za.co.dwarfsun.jobcardmanager.domain.User</class>
+    <class>za.co.dwarfsun.jobcardmanager.domain.Job</class>
+    <class>za.co.dwarfsun.jobcardmanager.domain.Person</class>
+    <class>za.co.dwarfsun.jobcardmanager.domain.Attribute</class>
+    <class>za.co.dwarfsun.jobcardmanager.domain.JobAttachment</class>
+    <class>za.co.dwarfsun.jobcardmanager.domain.JobData</class>
+    <class>za.co.dwarfsun.jobcardmanager.domain.ContactPerson</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/jobCardDB"/>

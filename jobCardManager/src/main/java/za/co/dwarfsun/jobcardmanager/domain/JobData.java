@@ -4,58 +4,62 @@
  * and open the template in the editor.
  */
 
-package za.co.dwarfsun.jobcardmanager.model;
+package za.co.dwarfsun.jobcardmanager.domain;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  *
  * @author Matthew
  */
 @Entity
-public class JobAttachment implements Serializable {
+public class JobData implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String filePath;
+    @ManyToOne
+    @JoinColumn(name="attributeID")
+    private Attribute attribute;
+    
+    private String val;
 
-    public JobAttachment(){
+    public JobData(){
     }
-    
-    public JobAttachment(Builder builder) {
-        id = builder.id;
-        filePath = builder.filePath;
+    public JobData(Builder builder){
     }
-    
-    public static class Builder {    
+    public static class Builder {
         private Long id;
-        private String filePath;
-        
+        private Attribute attribute;
+        private String val;
+        public Builder(String val){
+            this.val = val;
+        }
         public Builder id(Long value){
-            this.id = value;
+            this.id=value;
             return this;
         }
-        
-        public Builder filePath(String value){
-            this.filePath = value;
+        public Builder attribute(Attribute value){
+            this.attribute = value;
             return this;
         }
-        
-        public Builder JobAttachment(JobAttachment value){
-            id = value.getId();
-            filePath = value.getFilePath();
+        public Builder JobData(JobData value){
+            this.id = value.id;
+            this.val = value.val;
+            this.attribute = value.attribute;
             return this;
         }
-        public JobAttachment build(){
-            return new JobAttachment(this);
+        public JobData build(){
+            return new JobData(this);
         }
     }
-    
+
     public Long getId() {
         return id;
     }
@@ -63,13 +67,21 @@ public class JobAttachment implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-    
-    public String getFilePath() {
-        return filePath;
+
+    public String getValue() {
+        return val;
     }
 
-    public void setFilePath(String filePath) {
-        this.filePath = filePath;
+    public void setValue(String val) {
+        this.val = val;
+    }
+
+    public Attribute getAttribute() {
+        return attribute;
+    }
+
+    public void setAttribute(Attribute attribute) {
+        this.attribute = attribute;
     }
 
     @Override
@@ -82,10 +94,10 @@ public class JobAttachment implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof JobAttachment)) {
+        if (!(object instanceof JobData)) {
             return false;
         }
-        JobAttachment other = (JobAttachment) object;
+        JobData other = (JobData) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -94,7 +106,7 @@ public class JobAttachment implements Serializable {
 
     @Override
     public String toString() {
-        return "za.co.dwarfsun.jobcardmanager.model.JobAttachment[ id=" + id + " ]";
+        return "za.co.dwarfsun.jobcardmanager.model.JobData[ id=" + id + " ]";
     }
     
 }

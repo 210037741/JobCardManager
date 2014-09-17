@@ -6,7 +6,7 @@
 
 package za.co.dwarfsun.jobcardmanager.services.crud;
 
-import za.co.dwarfsun.jobcardmanager.model.AuditTrail;
+import za.co.dwarfsun.jobcardmanager.domain.AuditTrail;
 import za.co.dwarfsun.jobcardmanager.services.Services;
 
 /**

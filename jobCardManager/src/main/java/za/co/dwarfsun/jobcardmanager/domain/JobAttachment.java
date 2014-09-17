@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package za.co.dwarfsun.jobcardmanager.model;
+package za.co.dwarfsun.jobcardmanager.domain;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
@@ -17,51 +17,42 @@ import javax.persistence.Id;
  * @author Matthew
  */
 @Entity
-public class User implements Serializable {
+public class JobAttachment implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String userName;
-    private String password;
+    private String filePath;
 
-    public User(){
+    public JobAttachment(){
     }
     
-    public User(Builder builder) {
+    public JobAttachment(Builder builder) {
         id = builder.id;
-        userName = builder.userName;
-        password = builder.password;
+        filePath = builder.filePath;
     }
     
     public static class Builder {    
         private Long id;
-        private String userName;
-        private String password;
+        private String filePath;
         
         public Builder id(Long value){
             this.id = value;
             return this;
         }
         
-        public Builder username(String value){
-            this.userName = value;
+        public Builder filePath(String value){
+            this.filePath = value;
             return this;
         }
         
-        public Builder password(String value){
-            this.password = value;
-            return this;
-        }
-        
-        public Builder User(User value){
+        public Builder JobAttachment(JobAttachment value){
             id = value.getId();
-            userName = value.getUserName();
-            password = value.getPassword();
+            filePath = value.getFilePath();
             return this;
         }
-        public User build(){
-            return new User(this);
+        public JobAttachment build(){
+            return new JobAttachment(this);
         }
     }
     
@@ -73,20 +64,12 @@ public class User implements Serializable {
         this.id = id;
     }
     
-    public String getUserName() {
-        return userName;
+    public String getFilePath() {
+        return filePath;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-    
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
     }
 
     @Override
@@ -99,10 +82,10 @@ public class User implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof User)) {
+        if (!(object instanceof JobAttachment)) {
             return false;
         }
-        User other = (User) object;
+        JobAttachment other = (JobAttachment) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -111,7 +94,7 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "za.co.dwarfsun.jobcardmanager.model.User[ id=" + id + " ]";
+        return "za.co.dwarfsun.jobcardmanager.model.JobAttachment[ id=" + id + " ]";
     }
     
 }

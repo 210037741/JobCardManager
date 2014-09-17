@@ -49,7 +49,7 @@ public class ConnectionConfigTest {
         LocalContainerEntityManagerFactoryBean lef = new LocalContainerEntityManagerFactoryBean();
         lef.setDataSource(dataSource);
         lef.setJpaVendorAdapter(jpaVendorAdapter);
-        lef.setPackagesToScan("za.co.dwarfsun.jobcardmanager.model");
+        lef.setPackagesToScan("za.co.dwarfsun.jobcardmanager.domain");
         return lef;
     }
 

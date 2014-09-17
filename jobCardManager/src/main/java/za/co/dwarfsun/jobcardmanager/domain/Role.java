@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package za.co.dwarfsun.jobcardmanager.model;
+package za.co.dwarfsun.jobcardmanager.domain;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
@@ -17,87 +17,45 @@ import javax.persistence.Id;
  * @author Matthew
  */
 @Entity
-public class Job implements Serializable {
+public class Role implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String info;
-    private String status;
-    private Boolean complete;
-
-    public Job(){
+    private String description;
+    
+    public Role(){
     }
     
-    public Job(Builder builder) {
+    public Role(Builder builder) {
         id = builder.id;
-        info = builder.info;
-        status = builder.status;
-        complete = builder.complete;
+        description = builder.description;
     }
     
     public static class Builder {    
         private Long id;
-        private String info;
-        private String status;
-        private Boolean complete;
-    
+        private String description;
+        
         public Builder id(Long value){
             this.id = value;
             return this;
         }
         
-        public Builder info(String value){
-            this.info = value;
+        public Builder description(String value){
+            this.description = value;
             return this;
         }
         
-        public Builder status(String value){
-            this.status = value;
-            return this;
-        }
-        
-        public Builder complete(Boolean value){
-            this.complete = value;
-            return this;
-        }
-        
-        public Builder Job(Job value){
+        public Builder Role(Role value){
             id = value.getId();
-            info = value.getInfo();
-            status = value.getStatus();
-            complete = value.isComplete();
+            description = value.getDescription();
             return this;
         }
-        public Job build(){
-            return new Job(this);
+        public Role build(){
+            return new Role(this);
         }
     }
     
-    public String getInfo() {
-        return info;
-    }
-
-    public void setInfo(String info) {
-        this.info = info;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public Boolean isComplete() {
-        return complete;
-    }
-
-    public void setComplete(Boolean complete) {
-        this.complete = complete;
-    }
-
     public Long getId() {
         return id;
     }
@@ -105,7 +63,15 @@ public class Job implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+    
+    public String getDescription() {
+        return description;
+    }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -116,10 +82,10 @@ public class Job implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Job)) {
+        if (!(object instanceof Role)) {
             return false;
         }
-        Job other = (Job) object;
+        Role other = (Role) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -128,7 +94,7 @@ public class Job implements Serializable {
 
     @Override
     public String toString() {
-        return "za.co.dwarfsun.jobcardmanager.model.Job[ id=" + id + " ]";
+        return "za.co.dwarfsun.jobcardmanager.model.Role[ id=" + id + " ]";
     }
     
 }

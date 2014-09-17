@@ -18,7 +18,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.Date;
-import za.co.dwarfsun.jobcardmanager.model.AuditTrail;
+import za.co.dwarfsun.jobcardmanager.domain.AuditTrail;
 import za.co.dwarfsun.jobcardmanager.repository.AuditTrailRepository;
 import za.co.dwarfsun.jobcardmanager.test.ConnectionConfigTest;
 

@@ -16,7 +16,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import za.co.dwarfsun.jobcardmanager.model.JobData;
+import za.co.dwarfsun.jobcardmanager.domain.JobData;
 import za.co.dwarfsun.jobcardmanager.repository.JobDataRepository;
 import za.co.dwarfsun.jobcardmanager.test.ConnectionConfigTest;
 

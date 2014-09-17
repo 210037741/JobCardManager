@@ -6,7 +6,7 @@
 
 package za.co.dwarfsun.jobcardmanager.services.crud.implementation;
 
-import za.co.dwarfsun.jobcardmanager.model.JobCard;
+import za.co.dwarfsun.jobcardmanager.domain.JobCard;
 import za.co.dwarfsun.jobcardmanager.repository.GenericDAO;
 import za.co.dwarfsun.jobcardmanager.services.crud.JobCardCrudService;
 import java.util.List;

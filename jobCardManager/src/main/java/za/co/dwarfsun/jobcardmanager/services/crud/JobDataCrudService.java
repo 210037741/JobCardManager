@@ -6,7 +6,7 @@
 
 package za.co.dwarfsun.jobcardmanager.services.crud;
 
-import za.co.dwarfsun.jobcardmanager.model.JobData;
+import za.co.dwarfsun.jobcardmanager.domain.JobData;
 import za.co.dwarfsun.jobcardmanager.services.Services;
 
 /**
